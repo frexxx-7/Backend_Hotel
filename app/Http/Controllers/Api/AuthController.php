@@ -26,7 +26,7 @@ class AuthController extends Controller
         return response(compact('user', 'token'));
     }
 
-    public function login(LoginRequest $request)
+    public function signin(LoginRequest $request)
     {
         $credentials = $request->validated();
         if (!Auth::attempt($credentials)) {

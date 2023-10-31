@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\MainController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\RoomsController;
 use Illuminate\Http\Request;
@@ -26,3 +27,4 @@ Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/signin', [AuthController::class, 'signin']);
 Route::get('/news', [NewsController::class, 'readAll']);
 Route::get('/rooms', [RoomsController::class, 'readAll']);
+Route::get('/main', [MainController::class, 'readNewsAndRooms']);

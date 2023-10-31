@@ -14,6 +14,6 @@ class RoomsController extends Controller
     }
     public function addRoom()
     {
-
+        
     }
 }

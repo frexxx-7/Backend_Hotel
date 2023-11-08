@@ -16,8 +16,5 @@ class AdminController extends Controller
         $password = trim($admin_data[2]);
         return response(compact('username','email', 'password'));
     }
-    public function addNews()
-    {
 
-    }
 }

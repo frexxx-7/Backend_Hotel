@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/signin', [AuthController::class, 'signin']);
+Route::post('/addNews', [NewsController::class, 'addNews']);
 Route::get('/news', [NewsController::class, 'readAll']);
 Route::get('/rooms', [RoomsController::class, 'readAll']);
 Route::get('/main', [MainController::class, 'readNewsAndRooms']);

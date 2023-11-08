@@ -10,8 +10,13 @@ class MainController extends Controller
 {
     public function readNewsAndRooms()
     {
-        $news = News::all();
-        $rooms = Room::all();
+        try {
+            $news = News::all()->sortByDesc("created_at")->take(4);
+            $rooms = Room::all();
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+
         return response(compact("news", "rooms"));
     }
     public function addNews()

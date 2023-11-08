@@ -12,7 +12,7 @@ class MainController extends Controller
     {
         try {
             $news = News::all()->sortByDesc("created_at")->take(4);
-            $rooms = Room::all();
+            $rooms = Room::all()->sortByDesc("created_at")->take(4);
         } catch (\Throwable $th) {
             return $th->getMessage();
         }

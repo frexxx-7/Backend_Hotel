@@ -42,4 +42,30 @@ class NewsController extends Controller
         }
         return response(compact("news"));
     }
+
+    public function updateNews(CreateNewsRequest $request, string $id)
+    {
+        $data = $request->all();
+
+        try {
+            $news = News::where('id', $id)->update([
+                'title' => $data['title'],
+                'content' => $data['content'],
+                'image' => $data['image'],
+                'is_published' => $data['is_published'],
+            ]);
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("news"));
+    }
+
+    public function deleteNews(Request $request, string $id){
+        try {
+            $news = News::where("id", $id)->delete();
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("news"));
+    }
 }

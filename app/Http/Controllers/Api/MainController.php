@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Room;
+use Illuminate\Support\Facades\DB;
+use Request;
 
 class MainController extends Controller
 {
@@ -19,8 +21,15 @@ class MainController extends Controller
 
         return response(compact("news", "rooms"));
     }
-    public function addNews()
+    public function searchRooms(Request $request)
     {
+        $data = request('searchText');
 
+        try {
+            $rooms = Room::whereRaw("concat(numberOfBeds, square, number, quantityIsBusy) LIKE ?", ['%'.$data.'%'])->get();
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("rooms"));
     }
 }

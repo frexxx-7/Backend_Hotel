@@ -42,4 +42,30 @@ class RoomsController extends Controller
         }
         return response(compact("room"));
     }
+
+    public function updateRoom(CreateRoomRequest $request, string $id)
+    {
+        $data = $request->all();
+
+        try {
+            $room = Room::where('id', $id)->update([
+                'numberOfBeds' => $data['numberOfBeds'],
+                'square' => $data['square'],
+                'number' => $data['number'],
+                'quantityIsBusy' => $data['quantityIsBusy'],
+                'image' => $data['image'],
+            ]);
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("room"));
+    }
+    public function deleteRoom(Request $request, string $id){
+        try {
+            $room = Room::where("id", $id)->delete();
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("room"));
+    }
 }

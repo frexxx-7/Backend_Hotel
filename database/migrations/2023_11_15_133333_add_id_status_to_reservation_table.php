@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->longText('content');
-            $table->text('image')->nullable();
-            $table->boolean('is_published')->default(1);
-            $table->timestamps();
+        Schema::table('reservation', function (Blueprint $table) {
+            $table->bigInteger('idStatus')->unsigned();
+            $table ->foreign('idStatus')->references('id')->on('status');
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::table('_reservation', function (Blueprint $table) {
+            //
+        });
     }
 };

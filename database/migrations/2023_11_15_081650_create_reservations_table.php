@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('idUser');
+            $table->bigInteger('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->bigInteger('idRoom');
+            $table->bigInteger('idRoom')->unsigned();
             $table->foreign('idRoom')->references('id')->on('rooms')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });

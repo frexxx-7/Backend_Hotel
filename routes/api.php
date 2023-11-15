@@ -4,7 +4,9 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MainController;
 use App\Http\Controllers\Api\NewsController;
+use App\Http\Controllers\Api\ReservationController;
 use App\Http\Controllers\Api\RoomsController;
+use App\Http\Controllers\Api\StatusReservationController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -48,3 +50,7 @@ Route::get('/deleteRoom/{id}', [RoomsController::class, 'deleteRoom']);
 
 Route::get('/main', [MainController::class, 'readNewsAndRooms']);
 Route::post('/searchRooms', [MainController::class, 'searchRooms']);
+
+Route::post('/reservationRoom', [ReservationController::class, 'addReservation']);
+Route::post('/loadInfoReservation', [ReservationController::class, 'loadInfoReservation']);
+Route::post('/addStatusReservation', [StatusReservationController::class, 'addStatusReservation']);

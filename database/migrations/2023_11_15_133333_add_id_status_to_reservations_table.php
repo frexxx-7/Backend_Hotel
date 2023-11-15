@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('reservation', function (Blueprint $table) {
-            $table->bigInteger('idStatus')->unsigned();
-            $table ->foreign('idStatus')->references('id')->on('status');
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->bigInteger('idStatus')->unsigned()->default(null);
+            $table ->foreign('idStatus')->references('id')->on('status_reservations');
         });
     }
 
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('_reservation', function (Blueprint $table) {
-            //
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->dropColumn('idStatus');
         });
     }
 };

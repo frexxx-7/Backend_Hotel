@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\MainController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\Api\ReservationController;
@@ -58,3 +59,8 @@ Route::post('/loadInfoReservation', [ReservationController::class, 'loadInfoRese
 Route::get('/userRooms/{id}', [ReservationController::class, 'userRooms']);
 
 Route::post('/addStatusReservation', [StatusReservationController::class, 'addStatusReservation']);
+
+Route::post('/like', [LikeController::class, 'like']);
+Route::post('/checkLike', [LikeController::class, 'checkLike']);
+Route::post('/deleteLike', [LikeController::class, 'deleteLike']);
+

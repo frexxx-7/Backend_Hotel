@@ -24,6 +24,7 @@ class CreateReservationRequest extends FormRequest
         return [
             'idUser' => ['required', 'integer'],
             'idRoom' => ['required', 'integer'],
+            'idStatus'=> ['nullable', 'integer'],
         ];
     }
 }

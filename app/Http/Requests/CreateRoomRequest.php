@@ -26,7 +26,7 @@ class CreateRoomRequest extends FormRequest
             'square' => ['required', 'int'],
             'number' => ['required', 'int'],
             'quantityIsBusy' => ['required', 'int'],
-            'image' => ['string'],
+            'image' => ['nullable','string'],
         ];
     }
 }

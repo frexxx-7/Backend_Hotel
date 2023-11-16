@@ -16,5 +16,6 @@ class Reservation extends Model
     protected $fillable = [
       'idUser',
       'idRoom',
+      'idStatus'
   ];
 }

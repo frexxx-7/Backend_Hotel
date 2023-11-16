@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('square');
             $table->integer('number');
             $table->integer('quantityIsBusy');
-            $table->longText('image');
+            $table->longText('image')->nullable();
             $table->timestamps();
         });
     }

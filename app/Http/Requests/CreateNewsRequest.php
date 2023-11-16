@@ -24,7 +24,7 @@ class CreateNewsRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:191'],
             'content' => ['required', 'string'],
-            'image' => ['string'],
+            'image' => ['nullable','string'],
             'is_published' => ['required', 'bool'],
         ];
     }

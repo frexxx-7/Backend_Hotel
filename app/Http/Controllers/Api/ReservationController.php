@@ -17,6 +17,7 @@ class ReservationController extends Controller
       $reservation = Reservation::create([
         "idUser"=> $data["idUser"],
         "idRoom"=> $data["idRoom"],
+        "idStatus"=> $data["idStatus"],
       ]);
     } catch (\Throwable $th) {
       return $th->getMessage();
@@ -27,7 +28,7 @@ class ReservationController extends Controller
   public function loadInfoReservation(Request $request){  
     $data = request('idRoom');
     try {
-      $reservation = Reservation::where('idRoom', $data)->get();
+      $reservation = Reservation::leftJoin('status_reservations', 'reservations.idStatus', '=', 'status_reservations.id')-> where('idRoom', $data)->get();
     } catch (\Throwable $th) {
       return $th->getMessage();
     }

@@ -68,4 +68,15 @@ class RoomsController extends Controller
         }
         return response(compact("room"));
     }
+    public function searchAllRooms(Request $request)
+    {
+        $data = request('searchText');
+
+        try {
+            $rooms = Room::whereRaw("concat(numberOfBeds, square, number, quantityIsBusy) LIKE ?", ['%'.$data.'%'])->get();
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("rooms"));
+    }
 }

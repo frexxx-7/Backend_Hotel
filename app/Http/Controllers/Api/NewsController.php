@@ -68,4 +68,16 @@ class NewsController extends Controller
         }
         return response(compact("news"));
     }
+    public function searchAllNews(Request $request)
+    {
+        $data = request('searchText');
+
+        try {
+            $news = News::whereRaw("concat(title, content) LIKE ?", ['%'.$data.'%'])->get();
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("news"));
+    }
+    
 }

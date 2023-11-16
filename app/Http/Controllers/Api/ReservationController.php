@@ -34,4 +34,15 @@ class ReservationController extends Controller
     }
     return response(compact("reservation"));
   }
+  public function userRooms(Request $request, string $id)
+    {
+        try {
+            $rooms = Reservation::leftJoin('rooms', 'rooms.id', '=', 'reservations.idRoom')->where("idUser", $id)->get();
+            if (!$rooms)
+                return response("Room not found", 404);
+        } catch (\Throwable $th) {
+            return response($th->getMessage());
+        }
+        return response(compact("rooms"));
+    }
 }

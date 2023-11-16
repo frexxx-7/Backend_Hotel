@@ -18,6 +18,8 @@ class ReservationController extends Controller
         "idUser"=> $data["idUser"],
         "idRoom"=> $data["idRoom"],
         "idStatus"=> $data["idStatus"],
+        "arrivalDate"=> $data["arrivalDate"],
+        "departureDate"=> $data["departureDate"],
       ]);
     } catch (\Throwable $th) {
       return $th->getMessage();

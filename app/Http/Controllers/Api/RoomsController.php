@@ -24,6 +24,7 @@ class RoomsController extends Controller
                 'square' => $data['square'],
                 'number' => $data['number'],
                 'quantityIsBusy' => $data['quantityIsBusy'],
+                'price' => $data['price'],
                 'image' => $data['image'],
             ]);
         } catch (\Throwable $th) {
@@ -53,6 +54,7 @@ class RoomsController extends Controller
                 'square' => $data['square'],
                 'number' => $data['number'],
                 'quantityIsBusy' => $data['quantityIsBusy'],
+                'price' => $data['price'],
                 'image' => $data['image'],
             ]);
         } catch (\Throwable $th) {
@@ -73,7 +75,7 @@ class RoomsController extends Controller
         $data = request('searchText');
 
         try {
-            $rooms = Room::whereRaw("concat(numberOfBeds, square, number, quantityIsBusy) LIKE ?", ['%'.$data.'%'])->get();
+            $rooms = Room::whereRaw("concat(numberOfBeds, square, number, quantityIsBusy, price) LIKE ?", ['%'.$data.'%'])->get();
         } catch (\Throwable $th) {
             return response($th->getMessage());
         }

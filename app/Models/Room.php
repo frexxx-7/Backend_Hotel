@@ -18,6 +18,7 @@ class Room extends Model
         'square',
         'number',
         'quantityIsBusy',
+        'price',
         'image',
     ];
 }

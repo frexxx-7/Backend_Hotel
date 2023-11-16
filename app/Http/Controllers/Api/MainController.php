@@ -26,7 +26,7 @@ class MainController extends Controller
         $data = request('searchText');
 
         try {
-            $rooms = Room::whereRaw("concat(numberOfBeds, square, number, quantityIsBusy) LIKE ?", ['%'.$data.'%'])->get();
+            $rooms = Room::whereRaw("concat(numberOfBeds, square, number, quantityIsBusy, price) LIKE ?", ['%'.$data.'%'])->get();
         } catch (\Throwable $th) {
             return response($th->getMessage());
         }

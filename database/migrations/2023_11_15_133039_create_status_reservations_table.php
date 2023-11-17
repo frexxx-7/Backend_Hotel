@@ -16,6 +16,13 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        DB::table('status_reservations')->insert([
+          ['name' => 'Забронирована', 'created_at' => now(), 'updated_at' => now()],
+          ['name' => 'Свободна', 'created_at' => now(), 'updated_at' => now()],
+          ['name' => 'На ремонте', 'created_at' => now(), 'updated_at' => now()],
+          ['name' => 'Не сдается', 'created_at' => now(), 'updated_at' => now()],
+          ['name' => 'Частично свободна', 'created_at' => now(), 'updated_at' => now()]
+      ]);
     }
 
     /**
